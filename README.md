@@ -73,4 +73,4 @@ DLL输出到 `build/bin/OneKeyPotion.dll`，中间文件位于 `build/obj`。配
 
 ## 许可与来源
 
-此仓库未授予开源许可证。界面桥接代码改编自 [RewIO S4A21ClientPatch](https://gitgud.io/rewio/S4A21ClientPatch) 的 `EquipmentSwapNativeUi.cpp`，代码使用及分发应遵循适用的上游授权条件。
+界面桥接代码改编自 [RewIO S4A21ClientPatch](https://gitgud.io/rewio/S4A21ClientPatch) 的 `EquipmentSwapNativeUi.cpp`，代码使用及分发应遵循适用的上游授权条件。
