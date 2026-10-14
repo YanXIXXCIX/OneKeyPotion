@@ -1,0 +1,12 @@
+build/
+.vs/
+*.user
+*.suo
+*.log
+*.dll
+*.lib
+*.exp
+*.pdb
+*.obj
+*.zip
+OneKeyPotionData/
