@@ -57,7 +57,9 @@ GuiKey=F9
 MSBuild source/OneKeyPotion.vcxproj /p:Configuration=Release /p:Platform=Win32
 ```
 
-DLL输出到 `build/bin/OneKeyPotion.dll`，中间文件位于 `build/obj`。配套XUI和INI位于仓库根目录。
+构建输出位于 `build/bin`，包含 `OneKeyPotion.dll`、`OneKeyPotion.ini`、`OneKeyPotion.xui`，安装时一起复制到客户端目录。中间文件位于 `build/obj`。
+
+默认INI和XUI来自仓库根目录。插件读取与DLL同目录的INI；编译和替换DLL不会清理游戏目录中已有的配置，已有配置应按上面的两项设置核对。
 
 ## 源码
 
