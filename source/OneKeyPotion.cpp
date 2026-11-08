@@ -1,4 +1,4 @@
-﻿#define NOMINMAX
+#define NOMINMAX
 #include <windows.h>
 #include <algorithm>
 #include <atomic>
@@ -261,17 +261,18 @@ void Start() {
 LRESULT CALLBACK GameMessages(int code, WPARAM removing, LPARAM parameter) {
     if (code >= 0 && removing == PM_REMOVE && parameter) {
         auto* message = reinterpret_cast<MSG*>(parameter);
-        if (message->message == WM_KEYUP && message->wParam == static_cast<WPARAM>(g_hotkey)) g_keyHeld = false;
+        if ((message->message == WM_KEYUP || message->message == WM_SYSKEYUP) && message->wParam == static_cast<WPARAM>(g_hotkey)) g_keyHeld = false;
         if (message->message == g_dispatch) {
             g_posted = false;
             if (g_ready) { GuiTick(); Step(); }
             message->message = WM_NULL;
         } else if (g_ready && (message->hwnd == g_game || IsChild(g_game, message->hwnd)) && GuiKey(message)) {
             message->message = WM_NULL;
-        } else if (g_ready && message->message == WM_KEYDOWN &&
+        } else if (g_ready && (message->message == WM_KEYDOWN || message->message == WM_SYSKEYDOWN) &&
             message->wParam == static_cast<WPARAM>(g_hotkey) &&
             !(GetKeyState(VK_CONTROL) & 0x8000) && !(GetKeyState(VK_MENU) & 0x8000) &&
             !(GetKeyState(VK_SHIFT) & 0x8000) &&
+            !(GetKeyState(VK_LWIN) & 0x8000) && !(GetKeyState(VK_RWIN) & 0x8000) &&
             (message->hwnd == g_game || IsChild(g_game, message->hwnd)) && CanAct()) {
             if (!g_keyHeld && !(message->lParam & (1u << 30))) { g_keyHeld = true; Start(); }
             message->message = WM_NULL;

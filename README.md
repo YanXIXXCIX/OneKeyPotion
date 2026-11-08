@@ -12,9 +12,11 @@
 - 结果提示列出已使用和使用失败的药剂，冷却或已有药效跳过不列为失败。
 - 药剂目录及状态机制内置于插件。
 
+持续药的“已使用”表示已确认自身药效；一次性药的“已使用”表示原生入口已接受请求，不代表服务器消耗回执。
+
 ## 安装
 
-从仓库 Releases 下载玩家包，将 `OneKeyPotion.dll`、`OneKeyPotion.xui`、`OneKeyPotion.ini` 放入适配客户端目录。
+从仓库 [最新发布页](https://github.com/YanXIXXCIX/OneKeyPotion/releases/latest) 下载玩家包，将 `OneKeyPotion.dll`、`OneKeyPotion.xui`、`OneKeyPotion.ini` 放入适配客户端目录。
 
 客户端需要提供 `GameNative.dll` 的 `ClientPatchGetGameNativeApi` 接口。在 `GameGaurd.ini` 的 `[Plugins]` 下使用空闲插件槽登记 `OneKeyPotion.dll`，并保证它在 `GameNative.dll` 后加载。例如：
 
@@ -39,7 +41,7 @@ GuiKey=F9
 
 支持单独的 Shift、Ctrl、Alt 和左右键名，不支持 `Ctrl+A` 等组合键。系统保留键需能被游戏接收；文字输入时不触发。修改INI后重启客户端。
 
-喝药键在GUI内设置，不能与窗口键相同。默认喝药键为F8；窗口键选择F8时使用F7作为备用喝药键。
+喝药键在GUI内设置，可选F1至F24，不能与窗口键相同。默认喝药键为F8；窗口键选择F8时使用F7作为备用喝药键。
 
 ## 界面操作
 

@@ -1,4 +1,4 @@
-﻿// Included inside the plugin namespace; every entry runs on the game thread.
+// Included inside the plugin namespace; every entry runs on the game thread.
 struct CatalogEntry { std::wstring name; bool usable = false; int mode = 0; std::vector<int> variousBuffs; bool variousOnly=false; };
 std::map<int, CatalogEntry> g_catalog;
 std::map<int,int> g_effectGroups;
@@ -221,7 +221,7 @@ bool GuiKey(MSG* message) {
     if(g_recordKey && potion_ui::IsOpen()) {
         if(message->lParam&(1u<<30)) return true;
         if(key==VK_ESCAPE) {g_recordKey=false;g_status=L"已取消录键";}
-        else if(IsDrinkKey(key) && !(GetKeyState(VK_CONTROL)&0x8000) && !(GetKeyState(VK_MENU)&0x8000) && !(GetKeyState(VK_SHIFT)&0x8000)) {
+        else if(IsDrinkKey(key) && !(GetKeyState(VK_CONTROL)&0x8000) && !(GetKeyState(VK_MENU)&0x8000) && !(GetKeyState(VK_SHIFT)&0x8000) && !(GetKeyState(VK_LWIN)&0x8000) && !(GetKeyState(VK_RWIN)&0x8000)) {
             g_editKey=key;g_recordKey=false;g_dirty=true;g_status=L"新快捷键等待保存";
         }
         UpdateUi();return true;

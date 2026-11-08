@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #define NOMINMAX
 #include <windows.h>
 #include <cstdint>
@@ -190,9 +190,9 @@ inline bool AppendageState(int itemId, bool& active, int& milliseconds) {
                     // Remaining duration uses a protected value at +0x2C.
                     // Native reader decodes it and subtracts the native timer.
                     using Remaining=int (__thiscall*)(void*);
-                    const int left=reinterpret_cast<Remaining>(Address(0x19FD4C0))(reinterpret_cast<void*>(effect));
                     int deadline=0;
                     if(!ReadProtectedInt(effect+0x2C,deadline)) return false;
+                    const int left=reinterpret_cast<Remaining>(Address(0x19FD4C0))(reinterpret_cast<void*>(effect));
                     // A zero deadline is an untimed live state, not an expired timer.
                     if(left>0 || deadline==0) active=true;
                     if(left>milliseconds) milliseconds=left;
